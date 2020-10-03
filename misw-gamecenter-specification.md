@@ -16,15 +16,15 @@
 ---
 
 既に作ったhtmlのどれを対応させればよいのか？
-- ホーム：
-- 一般ユーザマイページ：
-- 管理者ユーザマイページ：
+- ホーム：`index.html`
+- 一般ユーザマイページ：`mypage_home.html`
+- 管理者ユーザマイページ：`admin-page.html`
 
 ---
 
 ### フッター
 
-- 一つのファイルにまとめる。(`footer.html`)
+- 一つのファイルにまとめる。(`footer.html`) <- `index.html`
 
 ## ホーム画面に戻るリンク　題名みたいなやつ
 
@@ -38,8 +38,12 @@
 
 ## 仕様書とhtmlの対応（slackにある画像のやつ）
 
-- トップ画面（`index.html`）
-- ...
+1. `index.html`
+2. `game-detail.html`
+3. `developer_detail`
+4. `developer.html`
+
+![](https://raw.githubusercontent.com/ITK13201/misw-gamecenter-specification/master/img/mock-up.jpeg)
 
 ## モデル
 
@@ -49,7 +53,7 @@
 - id　(ゲームID,int型)
 - title　（ゲームタイトル,string型）
 - description　（ゲームの説明,string型）
-- userid　（申請者ID,int型）
+- user (CustomUser)　（申請者情報, Forign Key）
 - status　（ゲームタイトル,int型）
 - image　（画像,ImageField型）
 - submittedtime　（初回申請日時,DateTime型）
@@ -60,16 +64,13 @@
 - score （スコア,int）
 #### developPartInf(ゲーム開発者テーブル)
 - gameid (ゲームID,int型)
-- developerid (開発者ID,int型)
+- user (CustomUser)　（申請者情報, Forign Key）
 - partinf (開発担当部分,string型)
 #### developerInf(開発者情報テーブル)
-- developerid (開発者ID,int型)
+- user (CustomUser)　（申請者情報, Forign Key）
 - description （ひとこと,string型）
-- image （画像,ImageField型）
 #### developerPartInf(開発者マスタ)
-- developerid (開発者ID,int型)
-- developername（開発者名,string型）
-- generation （代,int型）
+- Customuser
 #### statusInf(状態マスタ)
 - statusid(状態ID,int型)
 - statusname（状態,string型）
@@ -92,3 +93,13 @@
 #### CustomUser
 
 これでslackの認証結果を受け取る
+
+- ハンドネーム
+- メールアドレス
+- generation（各自設定）
+- user image（各自設定）
+
+## 早稲田祭まで完成しなければならない機能
+
+- フォーム申請＆取り消し
+- スーパーユーザーで無理やりでもいい
